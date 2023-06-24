@@ -1,5 +1,6 @@
 import { CLI_ARGS_KEYS } from '../constants/cli-args-keys.js';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
+import user from '../repositories/user.js';
 
 const greeting = () => {
   const argsArr = process.argv.slice(3);
@@ -8,6 +9,7 @@ const greeting = () => {
   const userName = argsObj[CLI_ARGS_KEYS.USERNAME] ?? 'Anonymous';
   const greetingLine = `${CLI_PHRASES.GREETING} ${userName}!`;
 
+  user.setName(userName);
   console.log(greetingLine);
 };
 

@@ -29,4 +29,5 @@ class CurrentPath {
   }
 }
 
-export default CurrentPath;
+const currentPath = new CurrentPath();
+export default currentPath;
