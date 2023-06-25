@@ -3,4 +3,5 @@ export const COMMANDS = {
   CD: 'cd',
   UP: 'up',
   EXIT: '.exit',
+  CAT: 'cat',
 };

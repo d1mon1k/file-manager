@@ -1,21 +1,19 @@
 import fs from 'fs/promises';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
-import { resolve, isAbsolute } from 'node:path';
+import resolvePath from '../utils/resolve-path.js';
 
 class CurrentPath {
   constructor() {
     this.currentPath = '';
   }
 
-  getCurrentPath() {
+  getPath() {
     return this.currentPath;
   }
 
-  async setCurrentPath(path) {
+  async setPath(path) {
     try {
-      const resolvedPath = !isAbsolute(path)
-        ? resolve(this.currentPath, path)
-        : path;
+      const resolvedPath = resolvePath(this.currentPath, path);
 
       await fs.readdir(resolvedPath);
 

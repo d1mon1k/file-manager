@@ -6,7 +6,10 @@ const ENTITY_TYPE = {
   DIR: 'directory',
 };
 
-const readDirectory = async path => {
+/* TODO: folders and files are sorted in alphabetical order ascending, but list of folders goes
+     first */
+
+const listItems = async path => {
   try {
     const entities = await fs.readdir(path, { withFileTypes: true });
     const table = entities.map(dirent => {
@@ -21,4 +24,4 @@ const readDirectory = async path => {
   }
 };
 
-export default readDirectory;
+export default listItems;
