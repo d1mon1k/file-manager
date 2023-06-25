@@ -1,6 +1,6 @@
 import fs from 'fs/promises';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
-import resolvePath from '../utils/resolve-path.js';
+import path from 'path';
 
 class CurrentPath {
   constructor() {
@@ -11,9 +11,9 @@ class CurrentPath {
     return this.currentPath;
   }
 
-  async setPath(path) {
+  async setPath(newPath) {
     try {
-      const resolvedPath = resolvePath(this.currentPath, path);
+      const resolvedPath = path.resolve(this.currentPath, newPath);
 
       await fs.readdir(resolvedPath);
 

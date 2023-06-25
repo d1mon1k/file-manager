@@ -5,4 +5,5 @@ export const COMMANDS = {
   EXIT: '.exit',
   CAT: 'cat',
   ADD: 'add',
+  RN: 'rn',
 };

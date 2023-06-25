@@ -1,9 +1,9 @@
-import resolvePath from '../utils/resolve-path.js';
 import { createReadStream } from 'node:fs';
+import path from 'path';
 
 const outputFileContents = (currentPath, newPath) => {
   return new Promise((res, rej) => {
-    const resolvedPath = resolvePath(currentPath, newPath);
+    const resolvedPath = path.resolve(currentPath, newPath);
     const readableStream = createReadStream(resolvedPath);
 
     readableStream.pipe(process.stdout);

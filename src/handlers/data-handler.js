@@ -6,14 +6,15 @@ import exit from '../operations/exit.js';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
 import outputFileContents from '../operations/output-file-contents.js';
 import CreateFile from '../operations/create-file.js';
+import rename from '../operations/rename.js';
 
 const handleData = async chunk => {
   try {
-    const [command, value] = processTerminalCmd(chunk);
+    const [command, ...values] = processTerminalCmd(chunk);
 
     switch (command) {
       case COMMANDS.CD:
-        await currentPath.setPath(value);
+        await currentPath.setPath(values[0]);
         break;
 
       case COMMANDS.UP:
@@ -25,11 +26,15 @@ const handleData = async chunk => {
         break;
 
       case COMMANDS.ADD:
-        await CreateFile(currentPath.getPath(), value);
+        await CreateFile(currentPath.getPath(), values[0]);
         break;
 
       case COMMANDS.CAT:
-        await outputFileContents(currentPath.getPath(), value);
+        await outputFileContents(currentPath.getPath(), values[0]);
+        break;
+
+      case COMMANDS.RN:
+        await rename(currentPath.getPath(), values);
         break;
 
       case COMMANDS.EXIT:
