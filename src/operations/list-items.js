@@ -6,9 +6,6 @@ const ENTITY_TYPE = {
   DIR: 'directory',
 };
 
-/* TODO: folders and files are sorted in alphabetical order ascending, but list of folders goes
-     first */
-
 const listItems = async path => {
   try {
     const entities = await fs.readdir(path, { withFileTypes: true });
@@ -18,7 +15,15 @@ const listItems = async path => {
         : { Name: dirent.name, Type: ENTITY_TYPE.DIR };
     });
 
-    console.table(table);
+    const sortedTable = table.sort((a, b) => {
+      if (a.Type === b.Type) {
+        return a.Name.localeCompare(b.Name);
+      } else {
+        return a.Type === ENTITY_TYPE.DIR ? -1 : 1;
+      }
+    });
+
+    console.table(sortedTable);
   } catch {
     console.log(CLI_PHRASES.EXECUTION_ERR);
   }
