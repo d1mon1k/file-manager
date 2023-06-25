@@ -4,4 +4,5 @@ export const COMMANDS = {
   UP: 'up',
   EXIT: '.exit',
   CAT: 'cat',
+  ADD: 'add',
 };

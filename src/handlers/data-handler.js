@@ -5,6 +5,7 @@ import listItems from '../operations/list-items.js';
 import exit from '../operations/exit.js';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
 import outputFileContents from '../operations/output-file-contents.js';
+import CreateFile from '../operations/create-file.js';
 
 const handleData = async chunk => {
   try {
@@ -21,6 +22,10 @@ const handleData = async chunk => {
 
       case COMMANDS.LS:
         await listItems(currentPath.getPath());
+        break;
+
+      case COMMANDS.ADD:
+        await CreateFile(currentPath.getPath(), value);
         break;
 
       case COMMANDS.CAT:
