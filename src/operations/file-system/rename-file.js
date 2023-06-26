@@ -1,8 +1,8 @@
-import { CLI_PHRASES } from '../constants/cli-phrases.js';
+import { CLI_PHRASES } from '../../constants/cli-phrases.js';
 import path from 'path';
 import fs from 'node:fs/promises';
 
-const rename = async (currentPath, paths) => {
+const renameFile = async (currentPath, paths) => {
   try {
     const resolvedOldPath = path.resolve(currentPath, paths[0]);
     const newPath = resolvedOldPath.replace(
@@ -10,10 +10,9 @@ const rename = async (currentPath, paths) => {
       paths[1],
     );
 
+    // prettier-ignore
     await fs.stat(newPath).then(
-      () => {
-        throw new Error();
-      },
+      () => { throw new Error() },
       () => {},
     );
 
@@ -23,4 +22,4 @@ const rename = async (currentPath, paths) => {
   }
 };
 
-export default rename;
+export default renameFile;

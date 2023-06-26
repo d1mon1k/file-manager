@@ -1,9 +1,9 @@
 import os from 'node:os';
 import currentPath from './src/repositories/current-path.js';
-import exit from './src/operations/exit.js';
+import exit from './src/operations/basic/exit.js';
 import handleExit from './src/handlers/exit-handler.js';
 import handleData from './src/handlers/data-handler.js';
-import greetUser from './src/operations/greet-user.js';
+import greetUser from './src/operations/basic/greet-user.js';
 
 const initialization = async () => {
   greetUser();

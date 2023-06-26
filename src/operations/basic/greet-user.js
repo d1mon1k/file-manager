@@ -1,7 +1,7 @@
-import { CLI_ARGS_KEYS } from '../constants/cli-args-keys.js';
-import { CLI_PHRASES } from '../constants/cli-phrases.js';
-import user from '../repositories/user.js';
-import replaceWordPlaceholder from '../utils/replace-word-placeholder.js';
+import { CLI_ARGS_KEYS } from '../../constants/cli-args-keys.js';
+import { CLI_PHRASES } from '../../constants/cli-phrases.js';
+import user from '../../repositories/user.js';
+import replaceWordPlaceholder from '../../utils/replace-word-placeholder.js';
 
 const getUserNameFromArgv = () => {
   const argsArr = process.argv.slice(3);

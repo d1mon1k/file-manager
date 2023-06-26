@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import { CLI_PHRASES } from '../constants/cli-phrases.js';
+import { CLI_PHRASES } from '../../constants/cli-phrases.js';
 import path from 'path';
 
 const createFile = async (currentPath, newPath) => {

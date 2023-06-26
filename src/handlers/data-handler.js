@@ -1,14 +1,15 @@
 import processTerminalCmd from '../utils/process-terminal-cmd.js';
 import { COMMANDS } from '../constants/commands.js';
 import currentPath from '../repositories/current-path.js';
-import listItems from '../operations/list-items.js';
-import exit from '../operations/exit.js';
+import listItems from '../operations/basic/list-items.js';
+import exit from '../operations/basic/exit.js';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
-import outputFileContents from '../operations/output-file-contents.js';
-import CreateFile from '../operations/create-file.js';
-import rename from '../operations/rename.js';
-import CopyFile from '../operations/copy-file.js';
-import moveFile from '../operations/move-file.js';
+import outputFileContents from '../operations/file-system/output-file-contents.js';
+import CreateFile from '../operations/file-system/create-file.js';
+import CopyFile from '../operations/file-system/copy-file.js';
+import moveFile from '../operations/file-system/move-file.js';
+import deleteFile from '../operations/file-system/delete-file.js';
+import renameFile from '../operations/file-system/rename-file.js';
 
 const handleData = async chunk => {
   try {
@@ -40,11 +41,15 @@ const handleData = async chunk => {
         break;
 
       case COMMANDS.RN:
-        await rename(currentPath.getPath(), values);
+        await renameFile(currentPath.getPath(), values);
         break;
 
       case COMMANDS.MV:
         await moveFile(currentPath.getPath(), values);
+        break;
+
+      case COMMANDS.RM:
+        await deleteFile(currentPath.getPath(), values[0]);
         break;
 
       case COMMANDS.EXIT:
