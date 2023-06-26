@@ -1,14 +1,16 @@
 import fs from 'fs/promises';
 import { CLI_PHRASES } from '../../constants/cli-phrases.js';
+import currentPathInstance from '../../repositories/current-path-instance.js';
 
 const ENTITY_TYPE = {
   FILE: 'file',
   DIR: 'directory',
 };
 
-const listItems = async path => {
+const listItems = async () => {
   try {
-    const entities = await fs.readdir(path, { withFileTypes: true });
+    const currentPath = currentPathInstance.getPath();
+    const entities = await fs.readdir(currentPath, { withFileTypes: true });
     const table = entities.map(dirent => {
       return dirent.isFile()
         ? { Name: dirent.name, Type: ENTITY_TYPE.FILE }

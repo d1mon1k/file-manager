@@ -6,32 +6,17 @@ import printHomedir from './services/print-homedir.js';
 import printUsername from './services/print-username.js';
 import printArch from './services/print-arch.js';
 
+const osArgumentsMap = new Map([
+  [OS_ARGUMENTS.EOL, printEolMarker],
+  [OS_ARGUMENTS.CPUS, printCpus],
+  [OS_ARGUMENTS.HOME_DIR, printHomedir],
+  [OS_ARGUMENTS.USER_NAME, printUsername],
+  [OS_ARGUMENTS.ARCHITECTURE, printArch],
+]);
+
 const showSystemInfo = arg => {
-  switch (arg) {
-    case OS_ARGUMENTS.EOL:
-      printEolMarker();
-      break;
-
-    case OS_ARGUMENTS.CPUS:
-      printCpus();
-      break;
-
-    case OS_ARGUMENTS.HOME_DIR:
-      printHomedir();
-      break;
-
-    case OS_ARGUMENTS.USER_NAME:
-      printUsername();
-      break;
-
-    case OS_ARGUMENTS.ARCHITECTURE:
-      printArch();
-      break;
-
-    default:
-      console.log(CLI_PHRASES.UNKNOWN_CMD);
-      break;
-  }
+  const service = osArgumentsMap.get(arg);
+  service ? service() : console.log(CLI_PHRASES.UNKNOWN_CMD);
 };
 
 export default showSystemInfo;

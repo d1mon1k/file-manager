@@ -4,7 +4,7 @@ import user from '../../repositories/user.js';
 import replaceWordPlaceholder from '../../utils/replace-word-placeholder.js';
 
 const getUserNameFromArgv = () => {
-  const argsArr = process.argv.slice(3);
+  const argsArr = process.argv.slice(2);
   const argsEntries = argsArr.map(a => a.replace('--', '').split('='));
   const argsObj = Object.fromEntries(argsEntries);
   const userName = argsObj[CLI_ARGS_KEYS.USERNAME] ?? 'Anonymous';

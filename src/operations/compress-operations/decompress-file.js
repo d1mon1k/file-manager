@@ -3,9 +3,11 @@ import { createReadStream, createWriteStream } from 'node:fs';
 import fs from 'node:fs/promises';
 import { createBrotliDecompress } from 'node:zlib';
 import { pipeline } from 'node:stream/promises';
+import currentPathInstance from '../../repositories/current-path-instance.js';
 
-const decompressFile = (currentPath, paths) => {
+const decompressFile = paths => {
   return new Promise((res, rej) => {
+    const currentPath = currentPathInstance.getPath();
     const fileName = path.basename(paths[0], path.extname(paths[0]));
     // prettier-ignore
     const resolvedNewPath = path.resolve(currentPath, paths[1], `${fileName}`);

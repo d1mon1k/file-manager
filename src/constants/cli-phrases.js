@@ -5,4 +5,6 @@ export const CLI_PHRASES = {
   UNKNOWN_CMD: 'Invalid input.',
   EXECUTION_ERR: 'Operation failed.',
   CPUS_AMOUNT: 'Overall amount of CPUS is {{amount}}.',
+  FILE_END: '\n---------- End of the file ----------\n\n',
+  FILE_START: '\n---------- Start of the file ----------\n',
 };
