@@ -1,1 +1,1 @@
-# file-manager
+# File managerThis project is part of the online courses offered by RS School and focuses on teaching Node.js.## DescriptionThe file manager using Node.js APIs:- Work using CLI- Perform basic file operations (copy, move, delete, rename, etc.)- Utilize Streams API- Get information about the host machine operating system- Perform hash calculations- Compress and decompress files
