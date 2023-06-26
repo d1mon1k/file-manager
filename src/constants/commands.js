@@ -9,4 +9,5 @@ export const COMMANDS = {
   CP: 'cp',
   MV: 'mv',
   RM: 'rm',
+  OS: 'os',
 };

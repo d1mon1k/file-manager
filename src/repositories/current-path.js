@@ -1,6 +1,7 @@
 import fs from 'fs/promises';
 import { CLI_PHRASES } from '../constants/cli-phrases.js';
 import path from 'path';
+import replaceWordPlaceholder from '../utils/replace-word-placeholder.js';
 
 class CurrentPath {
   constructor() {
@@ -18,7 +19,10 @@ class CurrentPath {
       await fs.readdir(resolvedPath);
 
       this.currentPath = resolvedPath;
-      const currentPathNotify = CLI_PHRASES.CURRENT_PATH + this.currentPath;
+      const currentPathNotify = replaceWordPlaceholder(
+        CLI_PHRASES.CURRENT_PATH,
+        this.currentPath,
+      );
 
       console.log(currentPathNotify);
     } catch {

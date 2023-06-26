@@ -10,12 +10,14 @@ import CopyFile from '../operations/file-system/copy-file.js';
 import moveFile from '../operations/file-system/move-file.js';
 import deleteFile from '../operations/file-system/delete-file.js';
 import renameFile from '../operations/file-system/rename-file.js';
+import showSystemInfo from '../operations/operating-system/show-system-info.js';
 
 const handleData = async chunk => {
   try {
     const [command, ...values] = processTerminalCmd(chunk);
 
     switch (command) {
+      /* ------------- Basic operations ------------- */
       case COMMANDS.CD:
         await currentPath.setPath(values[0]);
         break;
@@ -28,6 +30,11 @@ const handleData = async chunk => {
         await listItems(currentPath.getPath());
         break;
 
+      case COMMANDS.EXIT:
+        await exit();
+        break;
+
+      /* ------------- File system ------------- */
       case COMMANDS.ADD:
         await CreateFile(currentPath.getPath(), values[0]);
         break;
@@ -52,10 +59,12 @@ const handleData = async chunk => {
         await deleteFile(currentPath.getPath(), values[0]);
         break;
 
-      case COMMANDS.EXIT:
-        await exit();
+      /* ------------- Operating system ------------- */
+      case COMMANDS.OS:
+        showSystemInfo(values[0]);
         break;
 
+      /* ------------- Unknown command ------------- */
       default:
         console.log(CLI_PHRASES.UNKNOWN_CMD);
         break;
