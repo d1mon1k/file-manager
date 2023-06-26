@@ -7,6 +7,7 @@ import { CLI_PHRASES } from '../constants/cli-phrases.js';
 import outputFileContents from '../operations/output-file-contents.js';
 import CreateFile from '../operations/create-file.js';
 import rename from '../operations/rename.js';
+import CopyFile from '../operations/copy-file.js';
 
 const handleData = async chunk => {
   try {
@@ -27,6 +28,10 @@ const handleData = async chunk => {
 
       case COMMANDS.ADD:
         await CreateFile(currentPath.getPath(), values[0]);
+        break;
+
+      case COMMANDS.CP:
+        await CopyFile(currentPath.getPath(), values);
         break;
 
       case COMMANDS.CAT:
