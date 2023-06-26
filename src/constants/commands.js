@@ -11,4 +11,6 @@ export const COMMANDS = {
   RM: 'rm',
   OS: 'os',
   HASH: 'hash',
+  COMPRESS: 'compress',
+  DECOMPRESS: 'decompress',
 };

@@ -12,6 +12,8 @@ import deleteFile from '../operations/file-system/delete-file.js';
 import renameFile from '../operations/file-system/rename-file.js';
 import showSystemInfo from '../operations/operating-system/show-system-info.js';
 import calculateHash from '../operations/hash-calculation/calculate-hash.js';
+import compressFile from '../operations/compress-operations/compress-file.js';
+import decompressFile from '../operations/compress-operations/decompress-file.js';
 
 const handleData = async chunk => {
   try {
@@ -68,6 +70,15 @@ const handleData = async chunk => {
       /* ------------- Operating system ------------- */
       case COMMANDS.OS:
         showSystemInfo(values[0]);
+        break;
+
+      /* ------------- Compress operations ------------- */
+      case COMMANDS.COMPRESS:
+        await compressFile(currentPath.getPath(), values);
+        break;
+
+      case COMMANDS.DECOMPRESS:
+        await decompressFile(currentPath.getPath(), values);
         break;
 
       /* ------------- Unknown command ------------- */
