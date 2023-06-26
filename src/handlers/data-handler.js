@@ -11,6 +11,7 @@ import moveFile from '../operations/file-system/move-file.js';
 import deleteFile from '../operations/file-system/delete-file.js';
 import renameFile from '../operations/file-system/rename-file.js';
 import showSystemInfo from '../operations/operating-system/show-system-info.js';
+import calculateHash from '../operations/hash-calculation/calculate-hash.js';
 
 const handleData = async chunk => {
   try {
@@ -32,6 +33,11 @@ const handleData = async chunk => {
 
       case COMMANDS.EXIT:
         await exit();
+        break;
+
+      /* ------------- Hash calculation ------------- */
+      case COMMANDS.HASH:
+        await calculateHash(currentPath.getPath(), values[0]);
         break;
 
       /* ------------- File system ------------- */
