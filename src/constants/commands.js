@@ -7,4 +7,5 @@ export const COMMANDS = {
   ADD: 'add',
   RN: 'rn',
   CP: 'cp',
+  MV: 'mv',
 };

@@ -8,6 +8,7 @@ import outputFileContents from '../operations/output-file-contents.js';
 import CreateFile from '../operations/create-file.js';
 import rename from '../operations/rename.js';
 import CopyFile from '../operations/copy-file.js';
+import moveFile from '../operations/move-file.js';
 
 const handleData = async chunk => {
   try {
@@ -40,6 +41,10 @@ const handleData = async chunk => {
 
       case COMMANDS.RN:
         await rename(currentPath.getPath(), values);
+        break;
+
+      case COMMANDS.MV:
+        await moveFile(currentPath.getPath(), values);
         break;
 
       case COMMANDS.EXIT:
