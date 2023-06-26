@@ -4,6 +4,7 @@ import exit from './src/operations/basic/exit.js';
 import handleExit from './src/handlers/exit-handler.js';
 import handleData from './src/handlers/data-handler.js';
 import greetUser from './src/operations/basic/greet-user.js';
+import printUsername from './src/operations/operating-system/services/print-username.js';
 
 const initialization = async () => {
   greetUser();
